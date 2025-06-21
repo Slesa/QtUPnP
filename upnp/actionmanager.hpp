@@ -1,9 +1,9 @@
 #ifndef ACTION_MANAGER_HPP
-#define ACTION_MANAGER_HPP 1
+#define ACTION_MANAGER_HPP
 
 #include "using_upnp_namespace.hpp"
 #include "upnp_global.hpp"
-#include <QtNetwork/QNetworkReply>
+#include <QNetworkReply>
 #include <QEventLoop>
 
 START_DEFINE_UPNP_NAMESPACE
