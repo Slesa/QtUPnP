@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Network)
+find_package(Qt6 REQUIRED COMPONENTS Network Core5Compat)
 qt_standard_project_setup()
 
 qt_add_library(upnp STATIC 
@@ -61,3 +62,5 @@ qt_add_library(upnp STATIC
   xmlh.hpp
   xmlhservice.hpp xmlhservice.cpp
 )
+
+target_link_libraries(upnp PRIVATE Qt6::Network)
