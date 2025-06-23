@@ -1,5 +1,6 @@
 #include "browsereply.hpp"
 #include "helper.hpp"
+#include <QRegularExpression>
 #include <QDebug>
 
 START_DEFINE_UPNP_NAMESPACE
@@ -110,7 +111,7 @@ QList<CDidlItem> CBrowseReply::search (QList<CDidlItem> const & items, QString t
   QList<CDidlItem> results;
   if (!text.isEmpty ())
   {
-    QRegExp re ("[\\s\\-,&°()':\\.\"]"); // Separators.
+    QRegularExpression re ("[\\s\\-,&°()':\\.\"]"); // Separators.
     text = removeDiacritics (text.toUpper ());
 
     // Update returned.
@@ -121,7 +122,7 @@ QList<CDidlItem> CBrowseReply::search (QList<CDidlItem> const & items, QString t
     }
 
     float       distanceMax = 100000.0f;
-    QStringList texts       = text.split (re, QString::SkipEmptyParts);
+    QStringList texts       = text.split (re, Qt::SkipEmptyParts);
 
     QVector<TDistance> distances (cItems);
     int                cMatches = 0;
@@ -138,7 +139,7 @@ QList<CDidlItem> CBrowseReply::search (QList<CDidlItem> const & items, QString t
     {
       float biggerDistance = 0.0f;
       titles[iItem]        = removeDiacritics (items[iItem].title ().toUpper ());
-      titleComponents      = titles[iItem].split (re, QString::SkipEmptyParts);
+      titleComponents      = titles[iItem].split (re, Qt::SkipEmptyParts);
       for (int k = 0, cTitleComponents = titleComponents.size (); k < cTitleComponents; ++k)
       {
         for (QString const & text : texts)

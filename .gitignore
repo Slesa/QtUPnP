@@ -8,3 +8,6 @@ aivctrl/install/win32/Output/*.exe
 aivctrl/install/pi32/Output/debian/usr/bin/aivctrl
 .idea/
 build/
+/bin/
+/lib/
+CMakeLists.txt.user

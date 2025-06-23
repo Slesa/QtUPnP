@@ -4,6 +4,7 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QCoreApplication>
+#include <QRegularExpression>
 
 //#ifdef Q_OS_WIN
 //#include <winsock2.h>
@@ -309,8 +310,8 @@ QString QtUPnP::removeDiacritics (QString const & s)
 
 bool QtUPnP::isDuration (QString const & s)
 {
-  QRegExp re ("((\\d+:)?\\d{1,2}:\\d{1,2}(\\.\\d+)?)"); // 13:12:42.126 - 13:12:42
-  return re.exactMatch (s);
+  QRegularExpression re ("((\\d+:)?\\d{1,2}:\\d{1,2}(\\.\\d+)?)"); // 13:12:42.126 - 13:12:42
+  return re.match(s, 0, QRegularExpression::MatchType::NormalMatch, QRegularExpression::MatchOption::NoMatchOption).hasMatch();
 }
 
 QString QtUPnP::httpContentType (QString const & dlnaProtocolInfo)

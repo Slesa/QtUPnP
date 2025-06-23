@@ -32,8 +32,8 @@ bool COAuth2::tryConnection ()
       QString         value = m_data.value (var);
       if (var == "state" && value.isEmpty ())
       {
-        qsrand (QDateTime::currentDateTime ().toTime_t ());
-        quint32 state = (static_cast<quint32>(qrand ()) & 0x7fff) | ((static_cast<quint32>(qrand ()) & 0x7fff) << 16);
+        srand (QDateTime::currentDateTime ().currentSecsSinceEpoch ());
+        quint32 state = (static_cast<quint32>(rand ()) & 0x7fff) | ((static_cast<quint32>(rand ()) & 0x7fff) << 16);
         value         = QString::number (state);
         m_data[var]   = value;
       }

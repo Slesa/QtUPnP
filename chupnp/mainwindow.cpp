@@ -58,7 +58,7 @@ QTreeWidgetItem* CMainWindow::findActionItem (QString const & text)
   while ((*it) != nullptr)
   {
     QString itemText = (*it)->text(0);
-    itemText.remove (QRegExp (" \\(\\d+ms\\)"));
+    itemText.remove (QRegularExpression (" \\(\\d+ms\\)"));
     if (itemText == text)
     {
       item = *it;
@@ -113,10 +113,8 @@ void CMainWindow::clearError (QTreeWidgetItem* item)
 // Insert DIDL-Lite elements.
 void CMainWindow::insertDidlElems (CItem* item)
 {
-  QMapIterator<QString, CDidlElem> ite (item->didl ().elems ());
-  while (ite.hasNext ())
+  for (auto ite=item->didl ().elems ().constBegin(); ite!=item->didl().elems().constEnd(); ++ite)
   {
-    ite.next ();
     CDidlElem const & elem  = ite.value (); // DIDL-Lite element.
     QString const   & key   = ite.key (); // Name.
     QString const &   value = elem.value (); // Value.
@@ -144,7 +142,7 @@ void CMainWindow::insertDidlElems (CItem* item)
 
 void CMainWindow::updateTree (QTreeWidgetItem* item, CBrowseReply const & reply, EItemType type)
 {
-  QTime ti;
+  QElapsedTimer ti;
   ti.start ();
 
   QList<CDidlItem> const & didlItems = reply.items ();

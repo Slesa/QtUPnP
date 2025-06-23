@@ -33,7 +33,7 @@ bool CXmlHEvent::startElement (QString const & namespaceURI, QString const & loc
     }
 
     QString name = removeNameSpace (qName);
-    m_vars.insertMulti (name, val);
+    m_vars.insert (name, val);
   }
 
   return true;

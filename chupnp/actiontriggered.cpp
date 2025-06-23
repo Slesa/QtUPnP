@@ -15,7 +15,7 @@ void CMainWindow::on_m_rescan_triggered ()
   ui->m_services->clear ();
   hideProgressBar (false);
 
-  QTime ti;
+  QElapsedTimer ti;
   ti.start ();
 
   m_cp->discover (); // Launch the UPnP device discovery. This function can be called more than once.
@@ -61,7 +61,7 @@ void CMainWindow::on_m_export_triggered ()
   QString caption;
   QStringList dirs = QStandardPaths::standardLocations (QStandardPaths::DocumentsLocation);
 
-  QString fileName = QString ("%1_upnp_services_%2.htm").arg (exeBaseName).arg (date.toString (Qt::SystemLocaleShortDate));
+  QString fileName = QString ("%1_upnp_services_%2.htm").arg (exeBaseName).arg (date.toString (Qt::ISODate));
   fileName.replace ('/', '-');
   fileName.replace (':', '-');
   fileName.replace (' ', '_');
@@ -81,7 +81,7 @@ void CMainWindow::on_m_export_triggered ()
     QString u  = QString ("<h1 align=\"center\">%1 - %2 (%3)</h1>").arg (tr ("UPnP services")).arg (exeBaseName).arg (v);
     s << u.toUtf8 ();
 
-    u = QString ("<p><font size=\"4\"><b>%1</b></font>%2</p>").arg (tr ("Date: ")).arg (date.toString (Qt::DefaultLocaleLongDate));
+    u = QString ("<p><font size=\"4\"><b>%1</b></font>%2</p>").arg (tr ("Date: ")).arg (date.toString (Qt::TextDate));
     s << u.toUtf8 ();
 
     s << "<ul>";

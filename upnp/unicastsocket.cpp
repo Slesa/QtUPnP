@@ -1,6 +1,8 @@
 
 #include "unicastsocket.hpp"
 #include "helper.hpp"
+#include <QDebug>
+
 
 USING_UPNP_NAMESPACE
 

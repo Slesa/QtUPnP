@@ -2,6 +2,7 @@
 #include "helper.hpp"
 #include "dump.hpp"
 #include <QHostAddress>
+#include <QTimer>
 
 USING_UPNP_NAMESPACE
 
@@ -45,8 +46,8 @@ bool CEventingManager::sendRequest (QUrl url, char const * verb, QString const &
   url.setPath (eventSubURL);
   req.setUrl (url);
 
-  QTime time;
-  time.start ();
+  QElapsedTimer timer;
+  timer.start ();
 
   QNetworkReply* reply = m_naMgr->sendCustomRequest (req, verb);
   connect (reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(error(QNetworkReply::NetworkError)));
@@ -74,7 +75,7 @@ bool CEventingManager::sendRequest (QUrl url, char const * verb, QString const &
   }
 
   reply->deleteLater ();
-  m_elapsedTime = time.elapsed ();
+  m_elapsedTime = timer.elapsed();
   return success;
 }
 

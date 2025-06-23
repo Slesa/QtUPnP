@@ -1,6 +1,8 @@
 
 #include "multicastsocket.hpp"
 #include <QNetworkInterface>
+#include <QVariant>
+#include <QDebug>
 
 USING_UPNP_NAMESPACE
 

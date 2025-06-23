@@ -40,7 +40,7 @@ CPlugin::TVarVal CPluginObject::accessTokenHeader () const
 {
   COAuth2 const *  auth = oauth2 ();
   QByteArray headerValue ("Bearer ");
-  headerValue += auth->value (auth->accessToken ());
+  headerValue.append( auth->value (auth->accessToken ()).toUtf8() );
   return CPlugin::TVarVal ("Authorization", headerValue);
 }
 

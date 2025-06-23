@@ -534,10 +534,8 @@ QString CDidlItem::didl (bool percentEncodeing) const
 QStringList CDidlItem::dump () const
 {
   QStringList                      texts;
-  QMapIterator<QString, CDidlElem> ite (m_d->m_elems);
-  while (ite.hasNext ())
+  for (auto ite = m_d->m_elems.constBegin(); ite!=m_d->m_elems.constEnd(); ++ite)
   {
-    ite.next ();
     CDidlElem const & elem  = ite.value ();
     QString const &   value = elem.value ();
     TMProps const &   props = elem.props ();

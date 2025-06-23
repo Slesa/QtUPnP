@@ -1,4 +1,5 @@
 #include "devicecaps.hpp"
+#include <QStringList>
 
 START_DEFINE_UPNP_NAMESPACE
 
