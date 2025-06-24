@@ -10,10 +10,13 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../lib)
 #    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
 #)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Network Core5Compat Gui)
-find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
-find_package(Qt6 REQUIRED COMPONENTS Network)
-find_package(Qt6 REQUIRED COMPONENTS Gui)
+find_package(Qt6 REQUIRED COMPONENTS
+  Core
+  Network
+  Core5Compat
+  Gui
+)
+
 qt_standard_project_setup()
 
 qt_add_library(upnp STATIC 
@@ -71,7 +74,7 @@ qt_add_library(upnp STATIC
 )
 
 target_link_libraries(upnp PRIVATE Qt6::Network Qt6::Core5Compat Qt6::Gui)
-install(TARGETS upnp
-    BUNDLE  DESTINATION ../lib/
-    RUNTIME DESTINATION ../lib/ # ${CMAKE_INSTALL_BINDIR}
-)
+#install(TARGETS upnp
+#    BUNDLE  DESTINATION ../lib/
+#    RUNTIME DESTINATION ../lib/ # ${CMAKE_INSTALL_BINDIR}
+#)

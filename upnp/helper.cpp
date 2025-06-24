@@ -5,6 +5,8 @@
 #include <QDir>
 #include <QCoreApplication>
 #include <QRegularExpression>
+#include <QSysInfo>
+#include <QOperatingSystemVersion>
 
 //#ifdef Q_OS_WIN
 //#include <winsock2.h>
@@ -124,8 +126,9 @@ QString QtUPnP::buildSystemHeader ()
 {
   QString name;
 #ifdef Q_OS_WIN
-  QSysInfo::WinVersion version = QSysInfo::WindowsVersion;
-  switch (version)
+  QOperatingSystemVersion version = QOperatingSystemVersion::current();
+  name = version.name();
+  /*switch (version)
   {
     case QSysInfo::WV_VISTA:
       name = "Microsoft-Windows/6.0";
@@ -147,7 +150,7 @@ QString QtUPnP::buildSystemHeader ()
     default :
       name = "Microsoft-Windows/10.0";
       break;
-  }
+  }*/
 #else
   name = QSysInfo::kernelType () + '/' + QSysInfo::kernelVersion ();
 #endif

@@ -49,21 +49,21 @@ private:
     int m_expandedKey;
     QByteArray* m_state;
 
-    typedef struct{
+    typedef struct AES256{
         int nk = 8;
         int keylen = 32;
         int nr = 14;
         int expandedKey = 240;
     } AES256;
 
-    typedef struct{
+    typedef struct AES192{
         int nk = 6;
         int keylen = 24;
         int nr = 12;
         int expandedKey = 209;
     } AES192;
 
-    typedef struct{
+    typedef struct AES128{
         int nk = 4;
         int keylen = 16;
         int nr = 10;

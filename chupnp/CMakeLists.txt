@@ -6,11 +6,13 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../bin)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Network Core5Compat Gui Widgets)
-find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
-find_package(Qt6 REQUIRED COMPONENTS Network)
-find_package(Qt6 REQUIRED COMPONENTS Gui Widgets)
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS
+  Core
+  Network
+  Core5Compat
+  Gui
+  Widgets
+)
 
 link_directories(${CMAKE_SOURCE_DIR}/../lib)
 
